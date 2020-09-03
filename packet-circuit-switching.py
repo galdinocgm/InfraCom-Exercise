@@ -1,4 +1,5 @@
 from math import floor, comb
+import matplotlib.pyplot as plt
 
 # Essa função retorna a probabilidade de termos "x" usuários ativos na rede, dado alguns parâmetros.
 def probability_of_active_users(x, active_probability, connected_users):
@@ -11,6 +12,27 @@ def probability_of_demand_bigger_than_capacity(active_probability, connected_use
         probability += probability_of_active_users(active_users, active_probability, connected_users)
     # A explicação para o cálculo ser 1 - probability está explicado nas linhas 67-73 do código.
     return (1 - probability)
+
+# Essa função "plota" o gráfico.
+def plot_graph(connected_users, active_probability):
+
+    active_probability_list = []
+    for active_user in range(0,connected_users+1):
+        active_probability_list.append(probability_of_active_users(active_user,active_probability,connected_users))
+
+    plt.plot(
+        active_probability_list,
+        'b-',
+        linewidth=0.8,
+        marker=".",
+        mfc="r",
+        mec="r",
+        mew=1
+    )
+    plt.xlabel("Número de usuários ativos")
+    plt.ylabel("Probabilidade")
+
+    plt.show()
 
 def main():
     connected_users = int(input("Informe o número de usuários conectados: "))
@@ -53,6 +75,9 @@ def main():
     prob = probability_of_demand_bigger_than_capacity(active_probability, connected_users, max_simultaneous_users)
 
     print("A probabilidade da demanda da rede ser maior do que a capacidade do enlace, é de {val:.10f}.".format(val=prob))
+
+    # Chamando a função que mostra o gráfico.
+    plot_graph(connected_users,active_probability)
 
 if __name__ == "__main__":
     main()
