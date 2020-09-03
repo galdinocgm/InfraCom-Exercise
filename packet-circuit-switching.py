@@ -62,7 +62,6 @@ def main():
     )
     print("------------------------------------------------")
 
-
     # Considerando a comutação por pacotes:
     # Seja max_simultaneous_users o número máximo de usuários ativos simultaneamente.
     # Considere max_simultaneous_users igual a m.
@@ -71,6 +70,8 @@ def main():
     # Perceba também que P(x <= m) = 1 - (P(x=0) + P(x=1) + P(x=2) + ... + P(x=m)).
     # Sendo assim, para calcularmos a probabilidade da demanda da rede ser MAIOR do que a capacidade do enlace, precisamos
     # apenas saber calcular a probabilidade de termos "x" usuários ativos. E assim calculamos estes valores com "x" variando de 0 até m, e obtemos nossa resposta.
+
+    print("Considerando a comutação por pacotes: ")
 
     prob = probability_of_demand_bigger_than_capacity(active_probability, connected_users, max_simultaneous_users)
 
