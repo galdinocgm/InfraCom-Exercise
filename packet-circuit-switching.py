@@ -1,5 +1,6 @@
 from math import floor, comb
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Essa função retorna a probabilidade de termos "x" usuários ativos na rede, dado alguns parâmetros.
 def probability_of_active_users(x, active_probability, connected_users):
@@ -23,12 +24,13 @@ def plot_graph(connected_users, active_probability):
     plt.plot(
         active_probability_list,
         'b-',
-        linewidth=0.8,
-        marker=".",
+        linewidth=1,
+        marker="o",
         mfc="r",
         mec="r",
-        mew=1
+        markersize=4
     )
+    plt.grid("both")
     plt.xlabel("Número de usuários ativos")
     plt.ylabel("Probabilidade")
 
